@@ -1,3 +1,10 @@
+.viewport {
+
+    width: 100%;
+    display: flex;
+    align-content: center;
+}
+
 .container {
 
     display: grid;

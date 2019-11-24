@@ -6,6 +6,8 @@ let gridsize = "1fr ";
 let grid = gridsize.repeat([input]);
 let panelQty = input * input;
 
+//how big grid function 
+
 
 //initalising the grid
 container.style.gridTemplateColumns = grid;
@@ -59,16 +61,15 @@ click.addEventListener("click", (e) => {
 function paintinginColor () {
     const paint = document.querySelectorAll('.sq');
     
-    paint.forEach((sq) => {
+paint.forEach((sq) => {
         
+ sq.addEventListener('mouseover', (e) => {
+    if(e.buttons === 1 || e.buttons === 3) {
+            let randomHex1 = Math.floor(Math.random() * 256)
+            let randomHex2 = Math.floor(Math.random() * 256)
+            let randomHex3 = Math.floor(Math.random() * 256)
     
-        sq.addEventListener('mouseover', (e) => {
-            if(e.buttons === 1 || e.buttons === 3) {
-                let randomHex1 = Math.floor(Math.random() * 256)
-                let randomHex2 = Math.floor(Math.random() * 256)
-                let randomHex3 = Math.floor(Math.random() * 256)
-    
-                sq.style.backgroundColor = `rgba(${randomHex1},${randomHex2},${randomHex3})`;
+         sq.style.backgroundColor = `rgba(${randomHex1},${randomHex2},${randomHex3})`;
               
         
         }
@@ -78,7 +79,8 @@ function paintinginColor () {
             let randomHex2 = Math.floor(Math.random() * 256)
             let randomHex3 = Math.floor(Math.random() * 256)
 
-            sq.style.backgroundColor = `rgba(${randomHex1},${randomHex2},${randomHex3})`;
+         sq.style.backgroundColor = `rgba(${randomHex1},${randomHex2},${randomHex3})`;
+        
         })
     })}
 
@@ -88,6 +90,43 @@ function paintinginColor () {
     color.addEventListener("click", (e) => {
         paintinginColor();
     });
+
+    //painting in shade function 
+
+    function paintinginShade () {
+        const paint = document.querySelectorAll('.sq');
+        
+    paint.forEach((sq) => {
+            
+     sq.addEventListener('mouseover', (e) => {
+        if(e.buttons === 1 || e.buttons === 3) {
+                
+            
+            let randomHex = 255;
+ 
+             sq.style.backgroundColor = `rgba(${randomHex},${randomHex},${randomHex})`;
+                  
+            
+            }
+            })
+            sq.addEventListener('mousedown', (e) => {
+                let randomHex = 255;
+                
+    
+             sq.style.backgroundColor = `rgba(${randomHex},${randomHex},${randomHex})`;
+            
+            })
+        })}
+
+//painting in shade button
+const shade = document.querySelector(".shading")
+
+shade.addEventListener("click", (e) => {
+    paintinginShade();
+});
+
+
+
 
 
 //clear all cells function 
@@ -110,4 +149,6 @@ function paintingCleanUp () {
    
     createGrid();
     paintingByClick();
+
+
 

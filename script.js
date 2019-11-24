@@ -1,26 +1,21 @@
 
 //globals
 const container = document.querySelector(".container"); 
-let input = prompt("How big grid?");
-let gridsize = "1fr ";
-let grid = gridsize.repeat([input]);
-let panelQty = input * input;
-
-//how big grid function 
-
-
-//initalising the grid
-container.style.gridTemplateColumns = grid;
-container.style.gridTemplateRows = grid;
 
 //creating panels + populating the grid
 
-function createGrid() {
+function createGrid(inpoot) {
+    let panelQty = inpoot * inpoot;
+    let gridsize = "1fr ";
+    let grid = gridsize.repeat([inpoot]);
+    container.style.gridTemplateColumns = grid;
+    container.style.gridTemplateRows = grid;
+
 for(var i=1; i <= panelQty; i++) {
 const panel = document.createElement('div');
 panel.classList.add('sq');
 panel.id = (`${i}`);
-panel.style.backgroundColor = "transparent";
+panel.style.backgroundColor = "white";
 panel.style.borderStyle = "solid"
 panel.style.borderColor = "black"
 panel.style.borderWidth = "1px"
@@ -102,18 +97,18 @@ paint.forEach((sq) => {
         if(e.buttons === 1 || e.buttons === 3) {
                 
             
-            let randomHex = 255;
+            let eraser = 255;
  
-             sq.style.backgroundColor = `rgba(${randomHex},${randomHex},${randomHex})`;
+             sq.style.backgroundColor = `rgba(${eraser},${eraser},${eraser})`;
                   
             
             }
             })
             sq.addEventListener('mousedown', (e) => {
-                let randomHex = 255;
+                let eraser = 255;
                 
     
-             sq.style.backgroundColor = `rgba(${randomHex},${randomHex},${randomHex})`;
+             sq.style.backgroundColor = `rgba(${eraser},${eraser},${eraser})`;
             
             })
         })}
@@ -125,10 +120,6 @@ shade.addEventListener("click", (e) => {
     paintinginShade();
 });
 
-
-
-
-
 //clear all cells function 
 
 function paintingCleanUp () {
@@ -136,7 +127,7 @@ function paintingCleanUp () {
     
     paint.forEach((sq) => {
     
-        sq.style.backgroundColor = "transparent";
+        sq.style.backgroundColor = "white";
         })
     }
 
@@ -146,9 +137,41 @@ function paintingCleanUp () {
     clear.addEventListener("click", (e) => {
         paintingCleanUp();
     });
-   
-    createGrid();
+
+    createGrid(16);
     paintingByClick();
+
+
+    ////////////////////////////
+
+    function deleteBox () {
+        const paint = document.querySelectorAll('.sq');
+        
+        paint.forEach((sq) => {
+        
+            sq.remove();
+            
+            })
+            let input = prompt("How big would you like the grid? MAX 100!");
+
+            if(input > 100) {
+                input = 100;
+            }
+
+            createGrid(input)
+            paintingByClick();
+        }
+
+
+
+const clearout = document.querySelector(".newgrid")
+
+clearout.addEventListener("click", (e) => {
+    deleteBox();
+});
+
+
+
 
 
 

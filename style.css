@@ -1,8 +1,26 @@
+body {
+
+  
+}
+.title {
+    color: black;
+    font-family: 'Calistoga', cursive;
+    width: 100%;
+    display: flex;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+}
+
 .viewport {
 
     width: 100%;
     display: flex;
+    margin: auto;
     align-content: center;
+    justify-content: center;
+    background-image: url('pencil.jpg');
+    background-size: contain;
 }
 
 .container {
@@ -13,4 +31,24 @@
     border-style: solid;
     border-color: black;
 
+}
+
+.buttons {
+    
+    width: 640px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    
+    margin: 20px auto auto auto;
+   
+  
+
+}
+
+button {
+    height: 50px;
+    font-family: 'Calistoga', cursive;
+    font-size: large;
+
+    
 }
